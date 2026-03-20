@@ -148,12 +148,10 @@ text-shadow:
 }
 
 .about {
-    display: flex;
-    justify-content: center;   /* center horizontally */
-    align-items: center;       /* center vertically */
-    text-align: center;        /* center text */
-    flex-direction: column;    /* stack elements */
-    min-height: 100vh;         /* full screen height */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .about-text h2 {
