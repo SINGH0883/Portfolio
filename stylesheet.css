@@ -147,22 +147,24 @@ text-shadow:
     0 0 20px cyan, 0 0 40px cyan
 }
 
-.about{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 1.5rem;
+.about {
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+    text-align: center;        /* center text */
+    flex-direction: column;    /* stack elements */
+    min-height: 100vh;         /* full screen height */
 }
 
-.about-text h2{
-    font-size: 60px;
-    font-align: center;
+.about-text h2 {
+    text-align: center;
 }
 
-.about-text h2 span{
-    color: #0ef;
-}
+.about-text p {
+    text-align: center;
 
+    
+}
 .about-text h4{
     font-size: 29px;
     font-weight: 600;
