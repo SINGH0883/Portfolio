@@ -156,6 +156,7 @@ text-shadow:
 
 .about-text h2{
     font-size: 60px;
+    font-align: center;
 }
 
 .about-text h2 span{
