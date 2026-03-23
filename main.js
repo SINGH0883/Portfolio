@@ -67,3 +67,40 @@ if ("IntersectionObserver" in window) {
 
 typeEffect();
 
+const contactForm = document.getElementById("contact-form");
+const contactStatus = document.getElementById("contact-status");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        contactStatus.textContent = "Sending...";
+        contactStatus.className = "status-sending";
+        
+        const data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: contactForm.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                contactStatus.textContent = "Thanks for your submission!";
+                contactStatus.className = "status-success";
+                contactForm.reset();
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        contactStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        contactStatus.textContent = "Oops! There was a problem submitting your form";
+                    }
+                    contactStatus.className = "status-error";
+                })
+            }
+        }).catch(error => {
+            contactStatus.textContent = "Oops! There was a problem submitting your form";
+            contactStatus.className = "status-error";
+        });
+    });
+}
